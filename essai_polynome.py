@@ -55,3 +55,48 @@ def resoudre_polynome4(list_coef, x):
 		somme = somme * x + list_coef[i]
 
 	return somme
+
+ # Bonus
+
+def factorielle(n):
+        if n == 0:
+                return 1
+        return n * factorielle(n-1)
+
+def generer_coef_polynome(n):
+        list_coef = []
+
+        for i in range(n+1):
+                list_coef.append((factorielle(n)/(factorielle(i)*factorielle(n-i))))
+
+        return list_coef
+ 
+def resoudre_polynome(methode, list_coef, x):
+        if methode == 1:
+                return resoudre_polynome1(list_coef, x)
+        if methode == 2:
+                return resoudre_polynome1(list_coef, x)
+        if methode == 3:
+                return resoudre_polynome1(list_coef, x)
+        if methode == 4:
+                return resoudre_polynome1(list_coef, x)
+ 
+        return -1
+ 
+def calculer_polynome():
+        print 'Entrer le degre du polynome a resoudre : '
+        degre_polynome = input()
+ 
+        print 'Entrer la valeur de l\'inconnue x minimale : '
+        x_min = input()
+ 
+        print 'Entrer la valeur de l\'inconnue x maximale : '
+        x_max = input()
+         
+        print 'Entrer le numero de l\'algorithme de resolution : '
+        methode = input()
+ 
+        if degre_polynome < 100 and x_min < x_max and x_max < 100 and methode > 0 and methode < 5:
+                for x in range(x_min, x_max+1):
+                        print 'Pour x = ' + str(x) + " : " + str(resoudre_polynome(methode, generer_coef_polynome(degre_polynome), x))
+
